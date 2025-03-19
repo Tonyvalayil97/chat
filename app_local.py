@@ -90,6 +90,10 @@ if user_input and st.session_state.chain:
         for source_idx, source_doc in enumerate(source_documents):
             st.write(f"Source {source_idx + 1}: {source_doc.page_content}")
 
+    # Update chat history
+    st.session_state.chat_history.append({"role": "user", "content": user_input})
+    st.session_state.chat_history.append({"role": "assistant", "content": answer})
+
 # Display chat history
 if st.session_state.chat_history:
     st.write("Chat History:")
